@@ -207,7 +207,7 @@ sim_results_2 =
   select(-output_lists) %>% 
   unnest(estimate_df)
 
-sim_results_2 %>% view
+sim_results_2
 ```
 
 Let's make a plot.
@@ -289,4 +289,4 @@ rejects_p
 total_p + rejects_p
 ```
 
-In the plot with all samples, the true mean is approximately equal to the average estimate. However, in the plot with only samples for which the null was rejected, the average estimate only approximates the true mean when the effect size is between 4 and 6. This indicates that when effect size is large, the average estimate is a good approximation of the true value. When effect size is small, between 0-2, we can see that the average estimate is not a good approximate for the true value. The plot suggests that when the effect size is small, it is possible that the average estimate would overestimate the true mean.
+In the plot with all samples, the true mean is approximately equal to the average estimate. However, in the plot with only samples for which the null was rejected, the average estimate only approximates the true mean when the effect size is between 4 and 6. This indicates that when effect size is large, the average estimate is a good approximation of the true value. When effect size is small, between 0-3, we can see that the average estimate is not a good approximate for the true value. The plot suggests that when the effect size is small, it is possible that the average estimate would overestimate the true mean.
