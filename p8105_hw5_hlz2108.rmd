@@ -145,7 +145,7 @@ data_files =
     values_to = "observation"
   ) %>% 
   mutate(
-    arm = recode(arm, "con" = "control", "exp" = "experimental")) 
+    arm = recode(arm, "con" = "Control", "exp" = "Experimental")) 
 
 data_files
 ```
@@ -155,14 +155,16 @@ Making the spaghetti_plot!
 ```{r spaghetti_plot}
 plot_data = data_files %>% 
   ggplot(aes(x = week, y = observation, group = subject_id, color = subject_id)) + 
+  geom_point(alpha = 0.5) +
   geom_line() +
   facet_grid( ~ arm) +
   labs(
     title = "Observations over Time by Subject",
     x = "Week",
     y = "Observation"
-  )
-
+  ) + 
+  theme(plot.title = element_text(hjust = 0.5))
+  
 plot_data
 ```
 
@@ -234,9 +236,10 @@ power_plot = results_df %>%
   geom_line() +
   labs(
     title = "Association between Effect Size and Power",
-    x = "True Mean Value",
+    x = "True μ Value",
     y = "Proportion of Times Null was Rejected (Power)"
-  )
+  ) + 
+  theme(plot.title = element_text(hjust = 0.5))
 
 power_plot
 ```
@@ -279,8 +282,7 @@ rejects_p =
     x = "True μ Value",
     y = "Average Estimate of μ"
   ) + 
-  theme(
-    plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5))
 
 rejects_p
 ```
